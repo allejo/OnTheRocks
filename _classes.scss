@@ -1,0 +1,25 @@
+* {
+    &,
+    &:before,
+    &:after {
+        box-sizing: inherit;
+    }
+}
+
+html {
+    box-sizing: border-box;
+}
+
+.row {
+	@include make-container();
+}
+
+@for $i from 0 to $rocks-columns {
+	.col-#{$i + 1} {
+		@include make-columns($i + 1);
+	}
+
+    .offset-#{$i + 1} {
+        @include offset-columns($i + 1);
+    }
+}
