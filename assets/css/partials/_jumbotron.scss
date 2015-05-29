@@ -1,0 +1,31 @@
+.jumbotron {
+	background-image: url('../imgs/background.jpg');
+	padding: 40px 0;
+
+	.intro {
+		@extend %wrapper;
+
+		@include make-container();
+
+		svg {
+			@include make-columns(3);
+			@include transform(rotate(15deg));
+		}
+
+		h1 {
+			@include make-columns(9);
+
+			color: white;
+			font-family: $Font-SourceCode;
+			font-size: 32px;
+			font-weight: bold;
+			margin: auto;
+		}
+	}
+}
+
+.rock-svg {
+	fill: white;
+	height: 175px;
+	width: 175px;
+}

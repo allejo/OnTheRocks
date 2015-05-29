@@ -1,0 +1,17 @@
+.row {
+	background-color: #D0D0D0;
+	padding: 20px;
+
+	p {
+		margin-bottom: 10px;
+	}
+}
+
+@for $i from 1 to 12 {
+	.col-#{$i} {
+		background-color: #93BFD2;
+		font-family: cursive;
+		min-height: 1px;
+		padding: 10px;
+	}
+}
