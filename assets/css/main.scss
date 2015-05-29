@@ -1,3 +1,8 @@
+---
+# Muffin Button
+---
+@charset "utf-8";
+
 @import "partials/reset";
 
 @import "vendor/bourbon/bourbon";
@@ -12,3 +17,4 @@
 @import "partials/jumbotron";
 
 @import 'partials/rocks';
+@import 'partials/syntax-highlighting';
