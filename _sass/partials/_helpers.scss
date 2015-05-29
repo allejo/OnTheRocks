@@ -1,5 +1,20 @@
+.page-section {
+	margin-bottom: 30px;
+	padding: {
+		bottom: 30px;
+		top: 30px;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
 .wrapper,
 %wrapper {
-	margin: 0 auto;
+	margin: {
+		left: auto;
+		right: auto;
+	}
 	width: 1000px;
 }
