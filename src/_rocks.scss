@@ -1,6 +1,6 @@
-@import 'variables';
+@import 'settings/variables';
 
-@import 'grid';
-@import 'flex-utilities';
+@import 'flex/grid';
+@import 'flex/utilities';
 
-@import 'classes';
+@import 'utilities/classes';
