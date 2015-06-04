@@ -1,8 +1,8 @@
-@function calculate-width($columns) {
-    $gutter-total: $rocks-gutter * ($rocks-columns - 1);
+@function calculate-width($columns, $gutter) {
+    $gutter-total: $gutter * ($rocks-columns - 1);
     $individual-column-width: ($rocks-width - $gutter-total) / $rocks-columns;
-    
-    @return ($columns * $individual-column-width) + ($rocks-gutter * ($columns - 1));
+
+    @return ($columns * $individual-column-width) + ($gutter * ($columns - 1));
 }
 
 @mixin make-container() {
@@ -12,19 +12,23 @@
     @include flex-wrap(wrap);
 }
 
-@mixin make-columns($columns) {
-    $flex: calculate-width($columns);
+@mixin make-columns($columns, $gutter: $rocks-gutter) {
+    @if ($columns == $rocks-columns) {
+        $gutter: 0;
+    }
+
+    $flex: calculate-width($columns, $gutter);
 
     @include flex-basis($flex);
 
     max-width: $flex;
-    margin-right: $rocks-gutter;
+    margin-right: $gutter;
 
     &:last-child {
         margin-right: 0;
     }
 }
 
-@mixin offset-columns($columns) {
-    margin-left: calculate-width($columns) + $rocks-gutter;
+@mixin offset-columns($columns, $gutter: $rocks-gutter) {
+    margin-left: calculate-width($columns, $gutter) + $gutter;
 }
