@@ -6,10 +6,10 @@
 }
 
 @mixin make-container() {
-    @include display(flex);
-    @include flex(0 1 auto);
-    @include flex-direction(row);
-    @include flex-wrap(wrap);
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 @mixin make-columns($columns, $gutter: $rocks-gutter) {
@@ -19,7 +19,7 @@
 
     $flex: calculate-width($columns, $gutter);
 
-    @include flex-basis($flex);
+    flex-basis: $flex;
 
     max-width: $flex;
     margin-right: $gutter;

@@ -1,0 +1,20 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allejo/OnTheRocks"
+  },
+  "dependencies": {
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-watch": "*",
+    "load-grunt-tasks": "^3.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.0.2",
+    "cssnano": "^3.0.1",
+    "grunt-postcss": "^0.6.0",
+    "grunt-sass": "^0.18.0",
+    "grunt-sassdoc": "^2.0.0",
+    "grunt-scss-lint": "^0.3.4"
+  }
+}
