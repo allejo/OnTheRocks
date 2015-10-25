@@ -1,0 +1,34 @@
+@mixin make-container() {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: {
+        left: $rocks-gutter / -2;
+        right: $rocks-gutter / -2;
+    }
+}
+
+@mixin make-columns($columns, $gutter: $rocks-gutter) {
+    @if ($columns == $rocks-columns) {
+        $gutter: 0;
+    }
+
+    $flex: percentage($columns / $rocks-columns);
+
+    flex-basis: $flex;
+    max-width: $flex;
+
+    padding: {
+        left: $gutter / 2;
+        right: $gutter / 2;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+@mixin offset-columns($columns, $gutter: $rocks-gutter) {
+    margin-left: percentage($columns / $rocks-columns);
+}
