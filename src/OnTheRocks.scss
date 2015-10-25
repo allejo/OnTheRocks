@@ -1,17 +1,5 @@
 @import 'rocks';
 
-* {
-    &,
-    &:before,
-    &:after {
-        box-sizing: inherit;
-    }
-}
-
-html {
-    box-sizing: border-box;
-}
-
 .row {
     @include make-container();
 }
