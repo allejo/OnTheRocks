@@ -1,11 +1,11 @@
-@mixin make-container() {
+@mixin make-container($gutter: $rocks-gutter) {
     display: flex;
     flex: 1 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
     margin: {
-        left: $rocks-gutter / -2;
-        right: $rocks-gutter / -2;
+        left: $gutter / -2;
+        right: $gutter / -2;
     }
 }
 
