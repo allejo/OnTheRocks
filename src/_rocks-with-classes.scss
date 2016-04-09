@@ -1,0 +1,21 @@
+@import 'rocks';
+
+.container {
+    @extend %container;
+}
+
+.row {
+    @include make-container();
+}
+
+@each $bp in map_keys($breakpoints) {
+    @for $i from 1 through $rocks-columns {
+        .col-#{$bp}-#{$i} {
+            @include make-columns($bp, $i);
+        }
+
+        .offset-#{$bp}-#{$i} {
+            @include offset-columns($bp, $i);
+        }
+    }
+}

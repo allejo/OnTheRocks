@@ -1,5 +1,11 @@
-@import '_mixins/variables';
-@import '_mixins/grid';
+@import 'modules/variables';
+@import 'vendor/include-media';
+
+@import 'modules/helpers';
+@import 'modules/mobile-responsive';
+@import 'modules/placeholders';
+
+@import 'modules/grid';
 
 * {
     &,

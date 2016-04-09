@@ -1,0 +1,48 @@
+@mixin make-container($gutter: $rocks-gutter) {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: {
+        left: $gutter / -2;
+        right: $gutter / -2;
+    }
+}
+
+/// A mixin specify the amount of columns an element should take up
+///
+/// @param {String} $viewSize Accepted values: xs, sm, md, lg, xl, xxl
+/// @param {Number [unitless]} $columns
+///   Specifies the number of columns an element should span.
+///
+/// @example scss - SCSS Equivalent
+///   @include span-columns($columns);
+
+@mixin make-columns($viewSize, $columns, $gutter: $rocks-gutter) {
+    @include respond-up($viewSize) {
+        $flex: percentage($columns / $rocks-columns);
+
+        flex-basis: $flex;
+        max-width: $flex;
+
+        padding: {
+            left: $gutter / 2;
+            right: $gutter / 2;
+        }
+    }
+}
+
+/// A mixin specify the amount of columns an element should take up
+///
+/// @param {String} $viewSize Accepted values: xs, sm, md, lg, xl, xxl
+/// @param {Number [unitless]} $columns
+///   Specifies the number of columns an element should span.
+///
+/// @example scss - SCSS Equivalent
+///   @include span-columns($columns);
+
+@mixin offset-columns($viewSize, $columns, $gutter: $rocks-gutter) {
+    @include respond-up($viewSize) {
+        margin-left: percentage($columns / $rocks-columns);
+    }
+}

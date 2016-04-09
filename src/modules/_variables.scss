@@ -1,0 +1,14 @@
+$rocks-width: 100% !default;
+$rocks-gutter: 2% !default;
+$rocks-columns: 12 !default;
+
+// Mobile-first Breakpoints
+$breakpoints: (
+    xs: 0,
+    sm: 480px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1600px,
+    xxxl: 1920px
+) !default;
