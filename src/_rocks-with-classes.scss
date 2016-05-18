@@ -5,13 +5,25 @@
 }
 
 .row {
-    @include make-container();
+    @include make-flex-container();
 }
 
-@each $bp in map_keys($breakpoints) {
+.row--float {
+    @include make-float-container();
+}
+
+@each $bp in map-keys($breakpoints) {
     @for $i from 1 through $rocks-columns {
-        .col-#{$bp}-#{$i} {
-            @include make-columns($bp, $i);
+        .row {
+            .col-#{$bp}-#{$i} {
+                @include make-flex-columns($bp, $i);
+            }
+        }
+
+        .row--float {
+            .col-#{$bp}-#{$i} {
+                @include make-float-columns($bp, $i);
+            }
         }
 
         .offset-#{$bp}-#{$i} {

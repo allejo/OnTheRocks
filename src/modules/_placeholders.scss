@@ -1,5 +1,4 @@
-/// A placeholder that will automatically horizontally center a block element
-
+/// A placeholder that will automatically center a block element horizontally
 %margin-center {
     margin: {
         left: auto;
@@ -7,22 +6,19 @@
     }
 }
 
-/// The master width of the website that is set through `$Settings-Global-Width` in `_base.scss`.
-/// Because this project is mobile responsive, any view sizes smaller than a desktop will have
-/// 100% width.
-
+/// The width of the website at all of the given breakpoints
 %container {
     @extend %margin-center;
 
     // An amount of pixels removed from the container width in order to make up for the
     // horizontal space added by scrollbars
-    $Correction: 30px;
+    $_correction: 30px;
 
     width: 100%;
 
-    @each $bp in map_slice(map_keys($breakpoints), 2) {
+    @each $bp in map-slice(map_keys($breakpoints), 2) {
         @include respond-up($bp) {
-            width: map-get($breakpoints, $bp) - $Correction;
+            width: map-get($breakpoints, $bp) - $_correction;
         }
     }
 }

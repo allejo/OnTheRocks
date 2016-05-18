@@ -1,3 +1,9 @@
+/// Return a breakpoint that is one breakpoint larger than the given breakpoint
+///
+/// @access private
+///
+/// @param {Breakpoint} $breakpoint - The given breakpoint
+
 @function next-breakpoint($breakpoint) {
     @return get-next-key($breakpoints, $breakpoint);
 }
@@ -85,8 +91,7 @@
 }
 
 
-/// Have the specified content inside of the mixin respond to the specified Breakpoint and larger. BZiON is mobile-first
-/// so everything applied to a phone will be reflected on a desktop.
+/// Have the specified content inside of the mixin respond to the specified Breakpoint and larger.
 ///
 /// @content
 ///
