@@ -1,15 +1,39 @@
 %rocks-container-margin {
-    margin-left: $gutter / -2;
-    margin-right: $gutter / -2;
+    margin-left: $rocks-gutter / -2;
+    margin-right: $rocks-gutter / -2;
 }
 
+///
+///
+/// @access private
+
 %rocks-column-padding {
-    padding-left: $gutter / 2;
-    padding-right: $gutter / 2;
+    padding-left: $rocks-gutter / 2;
+    padding-right: $rocks-gutter / 2;
+}
+
+@mixin rocks-container-margin($gutter) {
+    @if $gutter == $rocks-gutter {
+        @extend %rocks-container-margin;
+    }
+    @else {
+        margin-left: $gutter / -2;
+        margin-right: $gutter / -2;
+    }
+}
+
+@mixin rocks-column-padding($gutter) {
+    @if $gutter == $rocks-gutter {
+        @extend %rocks-column-padding;
+    }
+    @else {
+        padding-left: $gutter / 2;
+        padding-right: $gutter / 2;
+    }
 }
 
 @mixin make-flex-container($gutter: $rocks-gutter) {
-    @extend %rocks-container-margin;
+    @include rocks-container-margin($gutter);
 
     display: flex;
     flex: 1 1 auto;
@@ -18,8 +42,8 @@
 }
 
 @mixin make-float-container($gutter: $rocks-gutter) {
-    @extend %rocks-container-margin;
     @include clearfix();
+    @include rocks-container-margin($gutter);
 }
 
 /// A mixin specify the amount of columns an element should take up
@@ -32,8 +56,7 @@
 ///   @include span-columns($columns);
 
 @mixin make-flex-columns($viewSize, $columns, $gutter: $rocks-gutter) {
-    @extend %rocks-column-padding;
-
+    @include rocks-column-padding($gutter);
     @include respond-up($viewSize) {
         $_flex: percentage($columns / $rocks-columns);
 
@@ -43,8 +66,7 @@
 }
 
 @mixin make-float-columns($viewSize, $columns, $gutter: $rocks-gutter) {
-    @extend %rocks-column-padding;
-
+    @include rocks-column-padding($gutter);
     @include respond-up($viewSize) {
         float: left;
         width: percentage($columns / $rocks-columns);
