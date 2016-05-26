@@ -13,6 +13,12 @@
 }
 
 @each $bp in map-keys($breakpoints) {
+    .col-#{$bp}-square {
+        @include respond-up($bp) {
+            @include perfect-square();
+        }
+    }
+
     @for $i from 1 through $rocks-columns {
         .row {
             .col-#{$bp}-#{$i} {
