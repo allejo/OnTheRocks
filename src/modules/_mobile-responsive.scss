@@ -35,17 +35,17 @@
         $nextBreakPoint: next-breakpoint($media);
 
         @if $nextBreakPoint == null {
-            @include media(">=" + $media) {
+            @include media('>=' + $media) {
                 @content;
             }
         }
         @else if map-get($breakpoints, $media) == 0 {
-            @include media("<" + $nextBreakPoint) {
+            @include media('<' + $nextBreakPoint) {
                 @content;
             }
         }
         @else {
-            @include media(">=" + $media, "<" + $nextBreakPoint) {
+            @include media('>=' + $media, '<' + $nextBreakPoint) {
                 @content;
             }
         }
@@ -79,12 +79,12 @@
     $endBreakpoint: next-breakpoint($end);
 
     @if map-get($breakpoints, $start) == 0 {
-        @include media("<" + $endBreakpoint) {
+        @include media('<' + $endBreakpoint) {
             @content;
         }
     }
     @else {
-        @include media(">=" + $start, "<" + $endBreakpoint) {
+        @include media('>=' + $start, '<' + $endBreakpoint) {
             @content;
         }
     }
@@ -116,7 +116,7 @@
         @content;
     }
     @else {
-        @include media(">=" + $viewSize) {
+        @include media('>=' + $viewSize) {
             @content;
         }
     }
