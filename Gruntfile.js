@@ -2,14 +2,12 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
-        cmq: {
-            options: {
-                log: false
-            },
+        combine_mq: {
             dist: {
-                files: {
-                    'dist': ['dist/*.css']
-                }
+                expand: true,
+                cwd: 'dist',
+                src: '*.css',
+                dest: 'dist/'
             }
         },
         postcss: {
@@ -30,10 +28,18 @@ module.exports = function(grunt) {
             }
         },
         sass: {
-            options: {
-                style: 'expanded'
+            debug: {
+                options: {
+                    outputStyle: 'expanded'
+                },
+                files: {
+                    'dist/rocks.css': 'src/rocks.scss'
+                }
             },
             dist: {
+                options: {
+                    outputStyle: 'compressed'
+                },
                 files: {
                     'dist/rocks.css': 'src/rocks.scss'
                 }
@@ -69,5 +75,8 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', [ 'scsslint', 'sass', 'sassdoc', 'cmq', 'postcss:dist' ]);
+    grunt.registerTask('dist', [ 'scsslint', 'sass:dist', 'sassdoc', 'combine_mq', 'postcss:dist' ]);
+    grunt.registerTask('debug', [ 'sass:debug', 'combine_mq' ]);
+
+    grunt.registerTask('default', [ 'dist' ]);
 };
