@@ -2,6 +2,16 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
+        cmq: {
+            options: {
+                log: false
+            },
+            dist: {
+                files: {
+                    'dist': ['dist/*.css']
+                }
+            }
+        },
         postcss: {
             options: {
                 map: {
@@ -59,5 +69,5 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', [ 'scsslint', 'sass', 'sassdoc', 'postcss:dist' ]);
+    grunt.registerTask('default', [ 'scsslint', 'sass', 'sassdoc', 'cmq', 'postcss:dist' ]);
 };

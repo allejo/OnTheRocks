@@ -12,6 +12,7 @@
   "devDependencies": {
     "autoprefixer": "^6.0.2",
     "cssnano": "^3.0.1",
+    "grunt-combine-media-queries": "^1.0.20",
     "grunt-postcss": "^0.6.0",
     "grunt-sass": "^1.2.0",
     "grunt-sassdoc": "^2.0.0",
