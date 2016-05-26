@@ -35,3 +35,6 @@ Temporary Items
 node_modules
 dist
 sassdoc
+
+### IDE ###
+.idea
