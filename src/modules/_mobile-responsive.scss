@@ -8,6 +8,16 @@
     @return get-next-key($breakpoints, $breakpoint);
 }
 
+
+///
+///
+/// @access private
+///
+
+@function last-breakpoint() {
+    @return get-last-key($breakpoints);
+}
+
 /// Similar to `respond-to()`, this mixin will restrict the content to only the specified Breakpoint and will not apply
 /// to a larger Breakpoint. This mixin will take Breakpoints with no larger or smaller Breakpoints and handle them
 /// appropriately with an efficient media query.
@@ -85,6 +95,26 @@
     }
     @else {
         @include media('>=' + $start, '<' + $endBreakpoint) {
+            @content;
+        }
+    }
+}
+
+
+///
+///
+/// @content
+///
+/// @param {Breakpoint} $viewSize - The Breakpoint the media query will be applied from
+
+@mixin respond-down($viewSize) {
+    $lastBreakpoint: last-breakpoint();
+
+    @if $viewSize == $lastBreakpoint {
+        @content;
+    }
+    @else {
+        @include media('<=' + $viewSize) {
             @content;
         }
     }

@@ -44,6 +44,14 @@
 }
 
 
+@function get-last-key($map) {
+    $keys: map-keys($map);
+    $length: length($keys);
+
+    @return if($length != 0, nth($keys, $length), null);
+}
+
+
 /// Slice a map or list into a smaller
 ///
 /// @author Hugo Giraudel
