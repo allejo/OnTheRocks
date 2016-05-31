@@ -43,11 +43,25 @@ module.exports = function(grunt) {
                 files: {
                     'dist/rocks.css': 'scss/rocks.scss'
                 }
+            },
+            tests: {
+                options: {
+                    outputStyle: 'expanded'
+                },
+                files: {
+                    'dist/true.css': 'tests/tests.scss'
+                }
             }
         },
         sassdoc: {
             default: {
-                src: [ 'scss/rocks/' ]
+                src: [ 'scss/rocks/' ],
+                options: {
+                    display: {
+                        access: [ 'public' ]
+                    },
+                    basePath: 'https://github.com/allejo/OnTheRocks'
+                }
             }
         },
         scsslint: {

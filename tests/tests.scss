@@ -1,0 +1,12 @@
+@import '../node_modules/sass-true/sass/true';
+
+// Import the project
+@import '../scss/rocks';
+
+
+// Import the test files
+@import 'helpers/maps';
+
+
+// Run the tests
+@include report();

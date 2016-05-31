@@ -12,22 +12,52 @@
 ///     qux: 3
 ///   );
 ///
-///   $next-key: get-next-key($map, bar); // "qux"
+///   $next-key: get-next-key($map, foo); // "bar"
 
 @function get-next-key($map, $key) {
-    $key-names: map-keys($map);
-    $n: index($key-names, $key);
-    $size: if($n < length($key-names), nth($key-names, $n + 1), null);
+    $result: null;
 
-    @return $size;
+    @if type-of($map) != map {
+        @warn '$map must be a map';
+    }
+    @else {
+        $key-names: map-keys($map);
+        $n: index($key-names, $key);
+        $result: if($n < length($key-names), nth($key-names, $n + 1), null);
+    }
+
+    @return $result;
 }
 
 
-@function get-last-key($map) {
-    $keys: map-keys($map);
-    $length: length($keys);
+/// Get the last key in a map. This function will return null if the given parameter is not a map
+///
+/// @access private
+///
+/// @param {Map} $map - The target map we will be using
+///
+/// @example scss - Usage
+///   $map: (
+///     foo: 1,
+///     bar: 2,
+///     qux: 3
+///   );
+///
+///   $next-key: get-last-key($map); // "qux"
 
-    @return if($length != 0, nth($keys, $length), null);
+@function get-last-key($map) {
+    $result: null;
+
+    @if type-of($map) != map {
+        @warn '$map must be a map';
+    }
+    @else {
+        $keys: map-keys($map);
+        $length: length($keys);
+        $result: nth($keys, $length);
+    }
+
+    @return $result;
 }
 
 

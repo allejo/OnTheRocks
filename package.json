@@ -1,7 +1,8 @@
 {
   "repository": {
     "type": "git",
-    "url": "https://github.com/allejo/OnTheRocks"
+    "url": "https://github.com/allejo/OnTheRocks",
+    "license": "MIT"
   },
   "dependencies": {
     "grunt": "*",
@@ -16,6 +17,7 @@
     "grunt-postcss": "^0.6.0",
     "grunt-sass": "^1.2.0",
     "grunt-sassdoc": "^2.0.0",
-    "grunt-scss-lint": "^0.3.4"
+    "grunt-scss-lint": "^0.3.4",
+    "sass-true": "^2.0.3"
   }
 }
