@@ -9,18 +9,17 @@
 }
 
 
-///
+/// Return the last (& largest) breakpoint
 ///
 /// @access private
-///
 
 @function last-breakpoint() {
     @return get-last-key($breakpoints);
 }
 
-/// Similar to `respond-to()`, this mixin will restrict the content to only the specified Breakpoint and will not apply
-/// to a larger Breakpoint. This mixin will take Breakpoints with no larger or smaller Breakpoints and handle them
-/// appropriately with an efficient media query.
+/// This mixin will restrict the content to only the specified breakpoint and will not apply to a smaller or larger
+/// breakpoint. Multiple breakpoints can be specified but the given content will be put into separate media queries and
+/// will not be combined.
 ///
 /// @content
 ///

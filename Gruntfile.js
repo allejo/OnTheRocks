@@ -2,6 +2,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         combine_mq: {
             dist: {
                 expand: true,
@@ -60,7 +61,7 @@ module.exports = function(grunt) {
                     display: {
                         access: [ 'public' ]
                     },
-                    basePath: 'https://github.com/allejo/OnTheRocks'
+                    basePath: '<%= pkg.repository.url %>/blob/<%= pkg.repository.docsbranch %>/scss/rocks/'
                 }
             }
         },

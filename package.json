@@ -2,7 +2,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/allejo/OnTheRocks",
-    "license": "MIT"
+    "license": "MIT",
+    "docsbranch": "master"
   },
   "dependencies": {
     "grunt": "*",
