@@ -1,0 +1,20 @@
+/// Clearfix hack to clear floats
+
+@mixin clearfix() {
+    // scss-lint:disable PropertySortOrder
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+/// Make an element a perfect square
+
+@mixin perfect-square() {
+    &:before {
+        content: '';
+        float: left;
+        padding-top: 100%;
+    }
+}

@@ -1,5 +1,5 @@
-scss_files: 'src/**/*.scss'
-exclude: 'src/vendor/*.scss'
+scss_files: 'scss/**/*.scss'
+exclude: 'scss/vendor/*.scss'
 
 linters:
   ElsePlacement:

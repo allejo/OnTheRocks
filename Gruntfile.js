@@ -33,7 +33,7 @@ module.exports = function(grunt) {
                     outputStyle: 'expanded'
                 },
                 files: {
-                    'dist/rocks.css': 'src/rocks.scss'
+                    'dist/rocks.css': 'scss/rocks.scss'
                 }
             },
             dist: {
@@ -41,18 +41,18 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed'
                 },
                 files: {
-                    'dist/rocks.css': 'src/rocks.scss'
+                    'dist/rocks.css': 'scss/rocks.scss'
                 }
             }
         },
         sassdoc: {
             default: {
-                src: [ 'src/modules/' ]
+                src: [ 'scss/rocks/' ]
             }
         },
         scsslint: {
             allFiles: [
-                'src/**/*.scss'
+                'scss/**/*.scss'
             ],
             options: {
                 config: '.scss-lint.yml'
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         },
         watch: {
             docs: {
-                files: [ 'src/**/*.scss' ],
+                files: [ 'scss/**/*.scss' ],
                 tasks: [ 'sassdoc' ],
                 options: {
                     livereload: false
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
             },
             styles: {
                 files: [
-                    'src/**/*.scss'
+                    'scss/**/*.scss'
                 ],
                 tasks: [ 'sass' ]
             }
