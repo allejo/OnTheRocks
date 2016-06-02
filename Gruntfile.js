@@ -61,6 +61,11 @@ module.exports = function(grunt) {
                     display: {
                         access: [ 'public' ]
                     },
+                    groups: {
+                        responsive: 'Responsive Design',
+                        grid: 'Grid System',
+                        'undefined': 'Helpers'
+                    },
                     basePath: '<%= pkg.repository.url %>/blob/<%= pkg.repository.docsbranch %>/scss/rocks/'
                 }
             }

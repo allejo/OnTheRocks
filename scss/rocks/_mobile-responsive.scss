@@ -21,7 +21,9 @@
 /// breakpoint. Multiple breakpoints can be specified but the given content will be put into separate media queries and
 /// will not be combined.
 ///
+/// @access public
 /// @content
+/// @group responsive
 ///
 /// @param {Arglist} $media_list - Breakpoints that will be individually targeted
 ///
@@ -65,7 +67,9 @@
 /// The specified content will be applied only to a specific range. If the start Breakpoint is `xs`, then it will
 /// automatically use only the max-width.
 ///
+/// @access public
 /// @content
+/// @group responsive
 ///
 /// @param {Breakpoint} $start - The Breakpoint the media query will be applied from
 /// @param {Breakpoint} $end   - The Breakpoint the media query will be applied to
@@ -100,11 +104,28 @@
 }
 
 
+/// Have the specified content inside of the mixin respond to the specified Breakpoint and smaller. Use this function
+/// for a desktop first design; this mixin will make use of `max-width` in media queries.
 ///
-///
+/// @access public
 /// @content
+/// @group responsive
 ///
 /// @param {Breakpoint} $viewSize - The Breakpoint the media query will be applied from
+///
+/// @example scss - Usage
+///   .phablet-and-smaller {
+///       @include respond-up(sm) {
+///           display: block;
+///       }
+///   }
+///
+/// @example css - CSS Output
+///   @media only screen and (max-width: 480px) {
+///       .phablet-and-smaller {
+///           display: block;
+///       }
+///   }
 
 @mixin respond-down($viewSize) {
     $lastBreakpoint: last-breakpoint();
@@ -120,9 +141,12 @@
 }
 
 
-/// Have the specified content inside of the mixin respond to the specified Breakpoint and larger.
+/// Have the specified content inside of the mixin respond to the specified Breakpoint and larger. Use this function for
+/// a mobile first design; this mixin will make use of `min-width` in media queries.
 ///
+/// @access public
 /// @content
+/// @group responsive
 ///
 /// @param {Breakpoint} $media - The Breakpoint (and larger) that will have the specified CSS rules applied to
 ///

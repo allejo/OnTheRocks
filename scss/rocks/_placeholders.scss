@@ -1,4 +1,8 @@
 /// A placeholder that will automatically center a block element horizontally
+///
+/// @access public
+/// @group responsive
+
 %margin-center {
     margin: {
         left: auto;
@@ -7,6 +11,10 @@
 }
 
 /// The width of the website at all of the given breakpoints
+///
+/// @access public
+/// @group responsive
+
 %container {
     @extend %margin-center;
 

@@ -1,3 +1,7 @@
+///
+///
+/// @access private
+
 %rocks-container-margin {
     margin-left: $rocks-gutter / -2;
     margin-right: $rocks-gutter / -2;
@@ -46,14 +50,20 @@
     @include rocks-container-margin($gutter);
 }
 
-/// A mixin specify the amount of columns an element should take up
+/// Create a rule set that spans a specified amount of columns using a flex box grid system
 ///
-/// @param {String} $viewSize Accepted values: xs, sm, md, lg, xl, xxl
+/// @access public
+/// @content
+/// @group grid
+///
+/// @param {Breakpoint}        $viewSize
+///   Accepted values: xs, sm, md, lg, xl, xxl. These values correspond to what's defined in `$breakpoints`
+///
 /// @param {Number [unitless]} $columns
 ///   Specifies the number of columns an element should span.
 ///
-/// @example scss - SCSS Equivalent
-///   @include span-columns($columns);
+/// @param {Number [unit]}     $gutter [$rocks-gutter]
+///   The amount of padding a column will have when next to another column
 
 @mixin make-flex-columns($viewSize, $columns, $gutter: $rocks-gutter) {
     @include rocks-column-padding($gutter);
@@ -65,6 +75,22 @@
     }
 }
 
+
+/// Create a rule set that spans a specified amount of columns using floats for the grid system
+///
+/// @access public
+/// @content
+/// @group grid
+///
+/// @param {Breakpoint}        $viewSize
+///   Accepted values: xs, sm, md, lg, xl, xxl. These values correspond to what's defined in `$breakpoints`
+///
+/// @param {Number [unitless]} $columns
+///   Specifies the number of columns an element should span.
+///
+/// @param {Number [unit]}     $gutter [$rocks-gutter]
+///   The amount of padding a column will have when next to another column
+
 @mixin make-float-columns($viewSize, $columns, $gutter: $rocks-gutter) {
     @include rocks-column-padding($gutter);
     @include respond-up($viewSize) {
@@ -73,11 +99,16 @@
     }
 }
 
-/// A mixin specify the amount of columns an element should take up
+/// Left offset an element by the specified amount of columns
 ///
-/// @param {String} $viewSize Accepted values: xs, sm, md, lg, xl, xxl
+/// @access public
+/// @group grid
+///
+/// @param {Breakpoint} $viewSize Accepted values: xs, sm, md, lg, xl, xxl
 /// @param {Number [unitless]} $columns
 ///   Specifies the number of columns an element should span.
+/// @param {Number [units]} $gutter [$rocks-gutter]
+///   The amount of gutter the offset will use
 ///
 /// @example scss - SCSS Equivalent
 ///   @include span-columns($columns);
