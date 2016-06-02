@@ -1,8 +1,31 @@
 body {
-	font-family: $Font-SansSerif;
-	line-height: 1.4em;
+    font-family: $Font-SansSerif;
+    font-weight: 300;
 }
 
-p {
-	margin-bottom: 15px;
+h1, h2, h3,
+h4, h5, h6 {
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 100;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 22px;
+}
+
+h5 {
+    font-size: 18px;
 }

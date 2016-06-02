@@ -1,29 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {% include head.html %}
-  </head>
+    <head>
+        {% include head.html %}
+    </head>
 
-  <body>
-    <header>
-        <nav>
-            <h1>On The Rocks</h1>
-
-            <ul>
-                <li>Usage</li>
-                <li>Documentation</li>
-            </ul>
-        </nav>
-    </header>
-
-    {% include jumbotron.html %}
-
-    {{ content }}
-
-    <footer>
-      <section class="wrapper">
-         <p>Copyright &copy; {{ site.time | date: '%Y' }}</p>
-      </section>
-    </footer>
-  </body>
+    <body>
+        {{ content }}
+    </body>
 </html>

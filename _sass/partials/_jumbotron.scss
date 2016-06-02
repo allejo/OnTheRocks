@@ -1,31 +1,33 @@
 .jumbotron {
-	background-image: url('../imgs/background.jpg');
-	padding: 40px 0;
+    margin-bottom: 30px;
+    padding: 100px;
+    text-align: center;
 
-	.intro {
-		@extend %wrapper;
+    &.landing-page {
+        background: rgba(180,224,240,1);
+        background: linear-gradient(to right, rgb(180,224,240) 0%, rgb(217,247,212) 100%);
 
-		@include make-container();
+        svg {
+            fill: #94B8A6;
+            height: 125px;
+            margin-bottom: 30px;
+            transform: rotate(30deg);
+            width: 100px;
+        }
+    }
 
-		svg {
-			@include make-columns(3);
-			@include transform(rotate(15deg));
-		}
+    h1, h2 {
+        color: #68927D;
+        font-family: $Font-SansSerif;
+        font-weight: 300;
+    }
 
-		h1 {
-			@include make-columns(9);
+    h1 {
+        margin-bottom: 5px;
+    }
 
-			color: white;
-			font-family: $Font-SourceCode;
-			font-size: 32px;
-			font-weight: bold;
-			margin: auto;
-		}
-	}
-}
-
-.rock-svg {
-	fill: white;
-	height: 175px;
-	width: 175px;
+    h2 {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
 }

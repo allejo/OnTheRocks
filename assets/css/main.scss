@@ -1,21 +1,11 @@
 ---
-# Muffin Button
 ---
-@charset "utf-8";
+@charset 'utf-8';
 
-@import "partials/reset";
+@import 'partials/reset';
+@import 'partials/base';
 
-@import "vendor/bourbon/bourbon";
-@import "vendor/OnTheRocks/src/rocks";
+@import 'vendor/OnTheRocks/scss/rocks';
 
-@import "partials/typography";
-@import "partials/base";
-
-@import "partials/generic";
-@import "partials/helpers";
-@import "partials/header";
-@import "partials/jumbotron";
-@import 'partials/markdown';
-
-@import 'partials/rocks';
-@import 'partials/syntax-highlighting';
+@import 'partials/generic';
+@import 'partials/jumbotron';
