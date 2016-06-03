@@ -16,7 +16,7 @@
     padding-right: $rocks-gutter / 2;
 }
 
-@mixin rocks-container-margin($gutter) {
+@mixin rocks-container-defaults($gutter) {
     @if $gutter == $rocks-gutter {
         @extend %rocks-container-margin;
     }
@@ -26,7 +26,7 @@
     }
 }
 
-@mixin rocks-column-padding($gutter) {
+@mixin rocks-column-defaults($gutter) {
     @if $gutter == $rocks-gutter {
         @extend %rocks-column-padding;
     }
@@ -39,7 +39,7 @@
 }
 
 @mixin make-flex-container($gutter: $rocks-gutter) {
-    @include rocks-container-margin($gutter);
+    @include rocks-container-defaults($gutter);
 
     display: flex;
     flex: 1 1 auto;
@@ -49,7 +49,7 @@
 
 @mixin make-float-container($gutter: $rocks-gutter) {
     @include clearfix();
-    @include rocks-container-margin($gutter);
+    @include rocks-container-defaults($gutter);
 }
 
 /// Create a rule set that spans a specified amount of columns using a flex box grid system
@@ -68,7 +68,10 @@
 ///   The amount of padding a column will have when next to another column
 
 @mixin make-flex-columns($viewSize, $columns, $gutter: $rocks-gutter) {
-    @include rocks-column-padding($gutter);
+    @if $gutter > 0 {
+        @include rocks-column-defaults($gutter);
+    }
+
     @include respond-up($viewSize) {
         $_flex: percentage($columns / $rocks-columns);
 
@@ -94,7 +97,10 @@
 ///   The amount of padding a column will have when next to another column
 
 @mixin make-float-columns($viewSize, $columns, $gutter: $rocks-gutter) {
-    @include rocks-column-padding($gutter);
+    @if $gutter > 0 {
+        @include rocks-column-defaults($gutter);
+    }
+
     @include respond-up($viewSize) {
         float: left;
         width: percentage($columns / $rocks-columns);

@@ -20,15 +20,21 @@
     }
 
     @for $i from 1 through $rocks-columns {
+        $column-name: ".col-#{$bp}-#{$i}";
+
+        #{$column-name} {
+            @include rocks-column-defaults($rocks-gutter);
+        }
+
         .row {
-            .col-#{$bp}-#{$i} {
-                @include make-flex-columns($bp, $i);
+            #{$column-name} {
+                @include make-flex-columns($bp, $i, -1);
             }
         }
 
         .row--float {
-            .col-#{$bp}-#{$i} {
-                @include make-float-columns($bp, $i);
+            #{$column-name} {
+                @include make-float-columns($bp, $i, -1);
             }
         }
 
