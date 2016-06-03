@@ -1,0 +1,15 @@
+.sandbox {
+    background-color: #B5E1F0;
+    margin: 15px 0;
+    padding: 15px;
+
+    div[class^="col-"] {
+        text-align: center;
+
+        p {
+            background-color: #D8F6D5;
+            margin-bottom: 0;
+            padding: 5px 0;
+        }
+    }
+}

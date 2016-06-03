@@ -7,10 +7,24 @@ permalink: /
     {% include assets/logo.svg %}
 
     <h1>Another Sass Grid System</h1>
-    <h2>I know, yea another one...</h2>
+    <h2>I know, yet another one...</h2>
 </section>
 
 <div class="container">
-    <h2>Yes, another system</h2>
-    <p>Yeup. Sorry about that. I know that both <a href="http://neat.bourbon.io/">Neat</a> and <a href="http://susy.oddbird.net/">Susy</a> exist and they are amazing but this Sass library exists to make a flexbox based grid system. There is a lot of articles out there as to why to use flexbox and why not to use flexbox so this library isn't here to persuade you start using flexboxes; this library assumes you like flexboxes and want to use it for page layout.</p>
+    <h2>On The Rocks</h2>
+    <p>This is an alternative to <a href="http://neat.bourbon.io/">Neat</a> and <a href="http://susy.oddbird.net/">Susy</a> built with flex boxes (using floats is supported too).</p>
+</div>
+
+<div class="container">
+    <h2>We look like every other system</h2>
+
+    <div class="sandbox">
+        <div class="row">
+            {% for i in (1...12) %}
+            <div class="col-md-1">
+                <p>col-md-1</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
