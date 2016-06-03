@@ -34,6 +34,8 @@
         padding-left: $gutter / 2;
         padding-right: $gutter / 2;
     }
+
+    width: 100%;
 }
 
 @mixin make-flex-container($gutter: $rocks-gutter) {
