@@ -1,14 +1,14 @@
 .jumbotron {
     margin-bottom: 30px;
-    padding: 100px;
+    padding: 100px 0;
     text-align: center;
 
     &.landing-page {
         background: rgba(180,224,240,1);
-        background: linear-gradient(to right, rgb(180,224,240) 0%, rgb(217,247,212) 100%);
+        background: linear-gradient(to right, $Color-LightBlue 0%, $Color-LightGreen 100%);
 
         svg {
-            fill: #94B8A6;
+            fill: $Color-DarkGreen;
             height: 125px;
             margin-bottom: 30px;
             transform: rotate(30deg);

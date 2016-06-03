@@ -1,13 +1,31 @@
 .sandbox {
-    background-color: #B5E1F0;
+    font-family: $Font-SourceCode;
     margin: 15px 0;
-    padding: 15px;
+
+    .row {
+        background-color: #B5E1F0;
+        padding: {
+            bottom: 15px;
+            top: 15px;
+        }
+    }
+
+    .row--first {
+        padding-bottom: 0;
+        text-align: center;
+
+        span {
+            width: 100%;
+        }
+    }
 
     div[class^="col-"] {
+        display: flex;
         text-align: center;
 
         p {
             background-color: #D8F6D5;
+            flex: 1;
             margin-bottom: 0;
             padding: 5px 0;
         }

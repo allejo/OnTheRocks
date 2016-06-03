@@ -10,21 +10,51 @@ permalink: /
     <h2>I know, yet another one...</h2>
 </section>
 
-<div class="container">
+<div class="container page-section">
     <h2>On The Rocks</h2>
     <p>This is an alternative to <a href="http://neat.bourbon.io/">Neat</a> and <a href="http://susy.oddbird.net/">Susy</a> built with flex boxes (using floats is supported too).</p>
 </div>
 
-<div class="container">
-    <h2>We look like every other system</h2>
+<div class="container page-section">
+    <h2>It works...</h2>
+    <p>...and looks like. Every. Other. System.</p>
 
     <div class="sandbox">
+        <div class="row row--first">
+            <div class="col-md-12">
+                <span>.row</span>
+            </div>
+        </div>
         <div class="row">
             {% for i in (1...12) %}
-            <div class="col-md-1">
-                <p>col-md-1</p>
-            </div>
+                <div class="col-md-1">
+                    <p>.col-md-1</p>
+                </div>
             {% endfor %}
         </div>
+    </div>
+</div>
+
+<div class="container page-section">
+    <h2>See?</h2>
+    <p>Nothing special except it's flex boxes.</p>
+
+    <div class="sandbox">
+        <div class="row row--first">
+            <div class="col-md-12">
+                <span>.row</span>
+            </div>
+        </div>
+        {% for i in (1...11) %}
+            {% assign alt = 12 | minus: i %}
+            <div class="row">
+                <div class="col-md-{{ i }}">
+                    <p>.col-md-{{ i }}</p>
+                </div>
+                <div class="col-md-{{ alt }}">
+                    <p>.col-md-{{ alt }}</p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
