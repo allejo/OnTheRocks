@@ -1,0 +1,107 @@
+/// Get the next key in a map. This function will return null if the key provided is the last key in the map.
+///
+/// @access private
+///
+/// @param {Map}    $map - The target map we will be looking through
+/// @param {String} $key - The key where it's following key needs to be found
+///
+/// @example scss - Usage
+///   $map: (
+///     foo: 1,
+///     bar: 2,
+///     qux: 3
+///   );
+///
+///   $next-key: get-next-key($map, foo); // "bar"
+
+@function get-next-key($map, $key) {
+    $result: null;
+
+    @if type-of($map) != map {
+        @warn '$map must be a map';
+    }
+    @else {
+        $key-names: map-keys($map);
+        $n: index($key-names, $key);
+        $result: if($n < length($key-names), nth($key-names, $n + 1), null);
+    }
+
+    @return $result;
+}
+
+
+/// Get the last key in a map. This function will return null if the given parameter is not a map
+///
+/// @access private
+///
+/// @param {Map} $map - The target map we will be using
+///
+/// @example scss - Usage
+///   $map: (
+///     foo: 1,
+///     bar: 2,
+///     qux: 3
+///   );
+///
+///   $next-key: get-last-key($map); // "qux"
+
+@function get-last-key($map) {
+    $result: null;
+
+    @if type-of($map) != map {
+        @warn '$map must be a map';
+    }
+    @else {
+        $keys: map-keys($map);
+        $length: length($keys);
+        $result: nth($keys, $length);
+    }
+
+    @return $result;
+}
+
+
+/// Slice a map or list into a smaller
+///
+/// @author Hugo Giraudel
+/// @access private
+///
+/// @param {Map}    $list  - The list to slice
+/// @param {Number} $start - The start index for this sliced map
+/// @param {Number} $end   - The end index of this sliced map
+///
+/// @link http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+@function map-slice($list, $start: 1, $end: length($list)) {
+    $result: null;
+
+    @if type-of($start) != number or type-of($end) != number {
+        @warn 'Either $start or $end are not a number for `slice`.';
+    }
+
+    @else if $start > $end {
+        @warn 'The start index has to be lesser than or equals to the end index for `slice`.';
+    }
+
+    @else if $start < 1 or $end < 1 {
+        @warn 'List indexes must be non-zero integers for `slice`.';
+    }
+
+    @else if $start > length($list) {
+        @warn "List index is #{$start} but list is only #{length($list)} item long for `slice`.";
+    }
+
+    @else if $end > length($list) {
+        @warn "List index is #{$end} but list is only #{length($list)} item long for `slice`.";
+    }
+
+    @else {
+        $result: ();
+
+        @for $i from $start through $end {
+            $result: append($result, nth($list, $i));
+        }
+    }
+
+    @return $result;
+}

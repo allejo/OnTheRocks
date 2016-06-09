@@ -1,0 +1,30 @@
+/// The width of the website at all of the given breakpoints
+///
+/// @access public
+/// @group responsive
+
+%container {
+    // An amount of pixels removed from the container width in order to make up for the
+    // horizontal space added by scrollbars
+    $_correction: 30px;
+
+    margin: {
+        left: auto;
+        right: auto;
+    }
+    padding: {
+        left: 15px;
+        right: 15px;
+    }
+    width: 100%;
+
+    @each $bp in map-slice(map_keys($breakpoints), 2) {
+        @include respond-up($bp) {
+            padding: {
+                left: 0;
+                right: 0;
+            }
+            width: map-get($breakpoints, $bp) - $_correction;
+        }
+    }
+}

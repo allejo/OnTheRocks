@@ -1,0 +1,128 @@
+///
+///
+/// @access private
+
+%rocks-container-margin {
+    margin-left: $rocks-gutter / -2;
+    margin-right: $rocks-gutter / -2;
+}
+
+///
+///
+/// @access private
+
+%rocks-column-padding {
+    padding-left: $rocks-gutter / 2;
+    padding-right: $rocks-gutter / 2;
+}
+
+@mixin rocks-container-defaults($gutter) {
+    @if $gutter == $rocks-gutter {
+        @extend %rocks-container-margin;
+    }
+    @else {
+        margin-left: $gutter / -2;
+        margin-right: $gutter / -2;
+    }
+}
+
+@mixin rocks-column-defaults($gutter) {
+    @if $gutter == $rocks-gutter {
+        @extend %rocks-column-padding;
+    }
+    @else {
+        padding-left: $gutter / 2;
+        padding-right: $gutter / 2;
+    }
+
+    width: 100%;
+}
+
+@mixin make-flex-container($gutter: $rocks-gutter) {
+    @include rocks-container-defaults($gutter);
+
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@mixin make-float-container($gutter: $rocks-gutter) {
+    @include clearfix();
+    @include rocks-container-defaults($gutter);
+}
+
+/// Create a rule set that spans a specified amount of columns using a flex box grid system
+///
+/// @access public
+/// @content
+/// @group grid
+///
+/// @param {Breakpoint}        $viewSize
+///   Accepted values: xs, sm, md, lg, xl, xxl. These values correspond to what's defined in `$breakpoints`
+///
+/// @param {Number [unitless]} $columns
+///   Specifies the number of columns an element should span.
+///
+/// @param {Number [unit]}     $gutter [$rocks-gutter]
+///   The amount of padding a column will have when next to another column
+
+@mixin make-flex-columns($viewSize, $columns, $gutter: $rocks-gutter) {
+    @if $gutter > 0 {
+        @include rocks-column-defaults($gutter);
+    }
+
+    @include respond-up($viewSize) {
+        $_flex: percentage($columns / $rocks-columns);
+
+        flex-basis: $_flex;
+        max-width: $_flex;
+    }
+}
+
+
+/// Create a rule set that spans a specified amount of columns using floats for the grid system
+///
+/// @access public
+/// @content
+/// @group grid
+///
+/// @param {Breakpoint}        $viewSize
+///   Accepted values: xs, sm, md, lg, xl, xxl. These values correspond to what's defined in `$breakpoints`
+///
+/// @param {Number [unitless]} $columns
+///   Specifies the number of columns an element should span.
+///
+/// @param {Number [unit]}     $gutter [$rocks-gutter]
+///   The amount of padding a column will have when next to another column
+
+@mixin make-float-columns($viewSize, $columns, $gutter: $rocks-gutter) {
+    @if $gutter > 0 {
+        @include rocks-column-defaults($gutter);
+    }
+
+    @include respond-up($viewSize) {
+        float: left;
+        width: percentage($columns / $rocks-columns);
+    }
+}
+
+/// Left offset an element by the specified amount of columns
+///
+/// @access public
+/// @group grid
+///
+/// @param {Breakpoint} $viewSize Accepted values: xs, sm, md, lg, xl, xxl
+/// @param {Number [unitless]} $columns
+///   Specifies the number of columns an element should span.
+/// @param {Number [units]} $gutter [$rocks-gutter]
+///   The amount of gutter the offset will use
+///
+/// @example scss - SCSS Equivalent
+///   @include span-columns($columns);
+
+@mixin offset-columns($viewSize, $columns, $gutter: $rocks-gutter) {
+    @include respond-up($viewSize) {
+        margin-left: percentage($columns / $rocks-columns);
+    }
+}

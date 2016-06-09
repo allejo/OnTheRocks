@@ -1,0 +1,46 @@
+$map: (
+    "one"  : 1,
+    "two"  : 2,
+    "three": 3,
+    "four" : 4,
+    "five" : 5
+);
+
+@include test-module('get-next-key') {
+    @include test("should return 'three' when 'two is given") {
+        $actual: get-next-key($map, two);
+        $expected: three;
+
+        @include assert-equal($actual, $expected);
+    }
+
+    @include test('should return null by calling the last key in a map') {
+        $actual: get-next-key($map, five);
+        $expected: null;
+
+        @include assert-equal($actual, $expected);
+    }
+
+    @include test('should return null when a non-map is given') {
+        $actual: get-next-key(1, one);
+        $expected: null;
+
+        @include assert-equal($actual, $expected);
+    }
+}
+
+@include test-module('get-last-key') {
+    @include test("should return 'five' when a map is given") {
+        $actual: get-last-key($map);
+        $expected: five;
+
+        @include assert-equal($actual, $expected);
+    }
+
+    @include test('should return null when a non-map is given') {
+        $actual: get-last-key(1);
+        $expected: null;
+
+        @include assert-equal($actual, $expected);
+    }
+}

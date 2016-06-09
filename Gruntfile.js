@@ -2,6 +2,15 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        combine_mq: {
+            dist: {
+                expand: true,
+                cwd: 'dist',
+                src: '*.css',
+                dest: 'dist/'
+            }
+        },
         postcss: {
             options: {
                 map: {
@@ -20,23 +29,50 @@ module.exports = function(grunt) {
             }
         },
         sass: {
-            options: {
-                style: 'expanded'
+            debug: {
+                options: {
+                    outputStyle: 'expanded'
+                },
+                files: {
+                    'dist/rocks.css': 'scss/rocks.scss'
+                }
             },
             dist: {
+                options: {
+                    outputStyle: 'compressed'
+                },
                 files: {
-                    'dist/rocks.css': 'src/rocks.scss'
+                    'dist/rocks.css': 'scss/rocks.scss'
+                }
+            },
+            tests: {
+                options: {
+                    outputStyle: 'expanded'
+                },
+                files: {
+                    'dist/true.css': 'tests/tests.scss'
                 }
             }
         },
         sassdoc: {
             default: {
-                src: [ 'src/' ]
+                src: [ 'scss/rocks/' ],
+                options: {
+                    display: {
+                        access: [ 'public' ]
+                    },
+                    groups: {
+                        responsive: 'Responsive Design',
+                        grid: 'Grid System',
+                        'undefined': 'Helpers'
+                    },
+                    basePath: '<%= pkg.repository.url %>/blob/<%= pkg.repository.docsbranch %>/scss/rocks/'
+                }
             }
         },
         scsslint: {
             allFiles: [
-                'src/**/*.scss'
+                'scss/**/*.scss'
             ],
             options: {
                 config: '.scss-lint.yml'
@@ -44,7 +80,7 @@ module.exports = function(grunt) {
         },
         watch: {
             docs: {
-                files: [ 'src/**/*.scss' ],
+                files: [ 'scss/**/*.scss' ],
                 tasks: [ 'sassdoc' ],
                 options: {
                     livereload: false
@@ -52,12 +88,15 @@ module.exports = function(grunt) {
             },
             styles: {
                 files: [
-                    'src/**/*.scss'
+                    'scss/**/*.scss'
                 ],
                 tasks: [ 'sass' ]
             }
         }
     });
 
-    grunt.registerTask('default', [ 'scsslint', 'sass', 'sassdoc', 'postcss:dist' ]);
+    grunt.registerTask('dist', [ 'scsslint', 'sass:dist', 'sassdoc', 'combine_mq', 'postcss:dist' ]);
+    grunt.registerTask('debug', [ 'sass:debug', 'combine_mq' ]);
+
+    grunt.registerTask('default', [ 'dist' ]);
 };
