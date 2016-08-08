@@ -6,6 +6,16 @@
 
 .row {
     @include make-flex-container();
+
+    @each $bp in map-keys($breakpoints) {
+        @for $i from (-1 * $rocks-columns) through ($rocks-columns) {
+            .order-#{$bp}-#{$i} {
+                @include respond-up($bp) {
+                    order: $i;
+                }
+            }
+        }
+    }
 }
 
 .row--float {
