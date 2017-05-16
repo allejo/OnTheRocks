@@ -16,6 +16,10 @@
             }
         }
     }
+
+    &.row--nowrap {
+        flex-wrap: nowrap;
+    }
 }
 
 .row--float {
