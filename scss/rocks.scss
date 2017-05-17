@@ -26,6 +26,10 @@
     @include make-float-container();
 }
 
+.col {
+    @extend %rocks-column-padding;
+}
+
 @each $bp in map-keys($breakpoints) {
     .col-#{$bp}-square {
         @include respond-up($bp) {

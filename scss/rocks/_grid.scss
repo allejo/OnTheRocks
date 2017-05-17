@@ -42,7 +42,7 @@
     @include rocks-container-defaults($gutter);
 
     display: flex;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -75,6 +75,7 @@
     @include respond-up($viewSize) {
         $_flex: percentage($columns / $rocks-columns);
 
+        flex: 0 0 auto;
         flex-basis: $_flex;
         max-width: $_flex;
     }
