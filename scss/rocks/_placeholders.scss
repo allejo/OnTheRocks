@@ -18,12 +18,15 @@
     }
     width: 100%;
 
+    @include respond-up(nth(map-keys($breakpoints), 2)) {
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
+
     @each $bp in map-slice(map_keys($breakpoints), 2) {
         @include respond-up($bp) {
-            padding: {
-                left: 0;
-                right: 0;
-            }
             width: map-get($breakpoints, $bp) - $_correction;
         }
     }
