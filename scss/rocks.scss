@@ -60,4 +60,10 @@
             @include offset-columns($bp, $i);
         }
     }
+
+    .offset-#{$bp}-reset {
+        @include respond-up($bp) {
+            margin-left: 0;
+        }
+    }
 }
