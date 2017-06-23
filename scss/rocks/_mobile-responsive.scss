@@ -129,12 +129,13 @@
 
 @mixin respond-down($viewSize) {
     $lastBreakpoint: last-breakpoint();
+    $breakpoint: next-breakpoint($viewSize);
 
     @if $viewSize == $lastBreakpoint {
         @content;
     }
     @else {
-        @include media('<=' + $viewSize) {
+        @include media('<' + $breakpoint) {
             @content;
         }
     }
